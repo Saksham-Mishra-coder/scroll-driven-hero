@@ -1,0 +1,331 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #121212;
+}
+
+.section {
+  height: 250vh;
+  position: relative;
+  background-color: #121212;
+}
+
+.track {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d1d1d1;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.road {
+  width: 100vw;
+  height: 200px;
+  background-color: #1e1e1e;
+  position: relative;
+  overflow: hidden;
+}
+
+.car {
+  height: 200px;
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+  object-fit: contain;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.trail {
+  height: 200px;
+  background-color: #45db7d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 0;
+  will-change: width;
+}
+
+.value-add {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: clamp(3rem, 7.5vw, 8rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  user-select: none;
+  pointer-events: none;
+}
+
+.value-letter {
+  color: #111111;
+  opacity: 0;
+  display: inline-block;
+  transition: opacity 0.12s ease-out;
+  will-change: opacity;
+}
+
+.value-letter.space-char {
+  min-width: 0.25em;
+}
+
+.text-box {
+  opacity: 0;
+  padding: 26px 30px;
+  border-radius: 12px;
+  position: absolute;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+#box1 {
+  background-color: #def54f;
+  color: #111111;
+  top: 6%;
+  right: 28%;
+}
+
+#box2 {
+  background-color: #6ac9ff;
+  color: #111111;
+  bottom: 6%;
+  right: 34%;
+}
+
+#box3 {
+  background-color: #333333;
+  color: #ffffff;
+  top: 6%;
+  right: 8%;
+}
+
+#box4 {
+  background-color: #fa7328;
+  color: #111111;
+  bottom: 6%;
+  right: 10%;
+}
+
+.num-box {
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.text-desc {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  max-width: 175px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #444444;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  z-index: 20;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.mouse-icon {
+  width: 22px;
+  height: 36px;
+  border: 2px solid #555555;
+  border-radius: 12px;
+  position: relative;
+}
+
+.wheel {
+  width: 4px;
+  height: 7px;
+  background-color: #555555;
+  border-radius: 2px;
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: mouseWheel 1.8s infinite ease-in-out;
+}
+
+@keyframes mouseWheel {
+  0% { opacity: 1; transform: translate(-50%, 0); }
+  60% { opacity: 0; transform: translate(-50%, 14px); }
+  100% { opacity: 0; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 1100px) {
+  #box1 { right: 26%; top: 4%; }
+  #box2 { right: 30%; bottom: 4%; }
+  #box3 { right: 4%; top: 4%; }
+  #box4 { right: 6%; bottom: 4%; }
+  
+  .text-box {
+    padding: 20px 24px;
+  }
+  
+  .num-box {
+    font-size: 46px;
+  }
+  
+  .text-desc {
+    font-size: 14px;
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 900px) {
+  .road {
+    height: 160px;
+  }
+
+  .car {
+    height: 160px;
+  }
+
+  .trail {
+    height: 160px;
+  }
+
+  .value-add {
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .road {
+    height: 130px;
+  }
+
+  .car {
+    height: 130px;
+  }
+
+  .trail {
+    height: 130px;
+  }
+
+  #box1 {
+    top: 3%;
+    left: 4%;
+    right: auto;
+  }
+
+  #box3 {
+    top: 3%;
+    right: 4%;
+  }
+
+  #box2 {
+    bottom: 4%;
+    left: 4%;
+    right: auto;
+  }
+
+  #box4 {
+    bottom: 4%;
+    right: 4%;
+  }
+
+  .text-box {
+    padding: 12px 14px;
+    border-radius: 8px;
+    gap: 4px;
+  }
+
+  .num-box {
+    font-size: 30px;
+  }
+
+  .text-desc {
+    font-size: 12px;
+    max-width: 125px;
+    line-height: 1.2;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .road {
+    height: 110px;
+  }
+
+  .car {
+    height: 110px;
+  }
+
+  .trail {
+    height: 110px;
+  }
+
+  .value-add {
+    left: 3%;
+    gap: 0.15rem;
+  }
+
+  .num-box {
+    font-size: 24px;
+  }
+
+  .text-desc {
+    font-size: 10px;
+    max-width: 100px;
+  }
+
+  .text-box {
+    padding: 10px 12px;
+  }
+}
